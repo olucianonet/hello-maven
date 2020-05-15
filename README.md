@@ -246,3 +246,104 @@ mvn verify
 
 - Run as > Maven Build ... > Main > Goals: Verify
 
+## 5. Criando um projeto web
+
+### Criando um projeto com o Eclipse
+
+- File > New Project > Maven Project > New Maven project (Default) > 
+	maven-archetype-webapp
+- Defina as propriedades do projeto:
+	- Groud Id: net.oluciano.maven.webstore
+	- Artifact Id: webstore
+	- Version: 1.0.0-SNAPSHOT
+	- Package: net.oluciano.maven.webstore
+- Projeto criado. 
+- Verifique no pom.xml, na tag <packaging>war</packaging>, indicando que é uma 
+web archive.
+- Suba um servidor de aplicações de teste:
+	- Adicione o plugin do [Jetty]()
+
+```xml
+<plugin>
+	<groupId>org.eclipse.jetty</groupId>
+	<artifactId>jetty-maven-plugin</artifactId>
+	<version>9.4.28.v20200408</version>
+</plugin>
+```
+
+- Execute `mvn jetty:run` para baixar o Jetty.
+- Acesse `localhost:8080`
+
+### Modificando o web.xml
+
+- Adicione a dependência do servlet no pom.xml
+
+```xml
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
+</dependency>
+```
+
+- Acesso o arquivo web.xml e atualie-o:
+
+```xml
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+</web-app>
+```
+
+- Execute novamente o servidor Jetty para testar.
+
+### Criando e executando um servlet
+
+- Crie uma nova Servlet em src/main/java, no pacote net.oluciano.maven.webstore
+
+```java
+package br.com.alura.maven.lojaweb;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(urlPatterns={"/contato"})
+public class ContatoServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter writer = resp.getWriter();
+        writer.println("<html><h2>Entre em contato</h2></html>");
+        writer.close();
+    }
+}
+```
+
+- Adicionar no pom.xml um configuração para o Jetty restartar automaticamente
+quando houver uma atualização no seu servlet.
+
+```xml
+<configuration>
+	<scanIntervalSeconds>10</scanIntervalSeconds>
+</configuration>
+```
+
+- Após realizar a alteração no pom.xml, altere o servlet e verifique se será
+restartado automaticamente no período definido no scanInteval.
+- Por fim, defina o contexto da aplicação, adicionando uma nova tag no pom.xml.
+
+```xml
+<webApp>
+	<contextPath>/test</contextPath>
+</webApp>
+```
+
+- Novamente, restarte o servidor e entre com a nova uri no navegador.
