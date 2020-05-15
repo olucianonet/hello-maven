@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="net.oluciano.maven.ProdutoTest"/>
+<fullyQualifiedTypeName name="net.oluciano.maven.Produto"/>
+<fullyQualifiedTypeName name="br.com.caelum.stella.tinytype.CPF"/>
+</qualifiedTypeNameHistroy>

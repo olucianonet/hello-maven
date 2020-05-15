@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="400" key="DIALOG_X_ORIGIN"/>
+		<item value="158" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="226" key="dialogHeight"/>
-		<item value="326" key="dialogWidth"/>
+		<item value="220" key="dialogHeight"/>
+		<item value="320" key="dialogWidth"/>
 		<list key="textEntries">
-			<item value="1"/>
 			<item value="1"/>
 		</list>
 		<list key="orderedElements">
 			<item value="org.eclipse.egit.ui.GitRepositoryExploring"/>
-			<item value="org.eclipse.jdt.ui.edit.text.java.generate.constructor.using.fields"/>
 		</list>
 		<list key="orderedProviders">
 			<item value="org.eclipse.ui.perspectives"/>
-			<item value="org.eclipse.ui.commands"/>
 		</list>
 		<list key="textArray">
 			<item value="git"/>
-			<item value="gene"/>
 		</list>
 	</section>
 	<section name="InstallationDialogSettings">

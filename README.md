@@ -347,3 +347,76 @@ restartado automaticamente no período definido no scanInteval.
 ```
 
 - Novamente, restarte o servidor e entre com a nova uri no navegador.
+- Lembrando que para acessar o servlet criado a uri definir é: 
+`@WebServlet(urlPatterns={"/contato"})`
+
+## 6. Utilizando o package no projeto
+
+### Adicionar uma nova dependência, stella.
+
+```xml
+<dependency>
+    <groupId>br.com.caelum.stella</groupId>
+    <artifactId>caelum-stella-core</artifactId>
+    <version>2.1.3</version>
+</dependency>
+```
+
+- Gere um pacote war da webapp: run as > maven build.. > main > goals
+	- clear package
+
+- Liste o arquivo target/webstore.jar e veja quais libs foram adicionadas
+- Agora, no pom.xml, defina a tag `<scope>provided</scope>`
+- Gere um novo pacote e verifique as lib adicionais. A lib servlet não foi 
+adicionada.
+- Todas as dependências padrão são incluídas por padrão. 
+	- Não são incluídas no war os escopos: test, provided (somente em dev).
+
+### Adicionar dependencias de produtos no pom.xml
+
+- Instale o projeto de produtos no repo local
+
+Em produtos execute `mvn install`, para instalar o jar localmente.
+
+- Adicione a dependencia no pom.xml
+
+```xml
+<dependency>
+	<groupId>net.oluciano.maven</groupId>
+	<artifactId>produtos</artifactId>
+	<version>1.0-SNAPSHOT</version>			
+</dependency>
+```
+
+- Agora já é possível utilizar referência de produtos no servlet.
+- Crie uma referência e suba o servidor para testar.
+
+### Escopo de Dependências
+
+- Análise da hierarquia das dependências: dependency:tree.
+
+```bash
+INFO] +- com.thoughtworks.xstream:xstream:jar:1.4.8:compile
+[INFO] |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] \- com.google.code.gson:gson:jar:2.6.2:compile
+```
+
+- provided: compilar e testar.
+- compile: compilar, testar, executar.
+- test
+- runtime: executar.
+
+- Conflito de pom.xml
+- Excluir dependências
+
+```xml
+<exclusions>
+	<exclusion>
+		<groupId>xmlpull</groupId>
+		<artifactId>xmlpull</artifactId>		
+	</exclusion>
+</exclusions>
+```
