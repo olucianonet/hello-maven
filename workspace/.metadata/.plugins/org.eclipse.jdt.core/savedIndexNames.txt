@@ -1,0 +1,19 @@
+INDEX VERSION 1.130+/home/luciano/courses/maven/hello-maven/workspace/.metadata/.plugins/org.eclipse.jdt.core
+4040385652.index
+3549044814.index
+2042582692.index
+2033841270.index
+1348699869.index
+1663517256.index
+1784346674.index
+3716588160.index
+3777665129.index
+4270017560.index
+1338853400.index
+3474327051.index
+4156233971.index
+1993283982.index
+563594805.index
+3301531327.index
+2464927295.index
+2858543768.index

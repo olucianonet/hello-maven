@@ -1,0 +1,5 @@
+package net.oluciano.maven;
+
+public class Produto {
+
+}
