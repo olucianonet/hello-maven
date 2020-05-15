@@ -94,4 +94,27 @@ Exemplo:
 
 ## 3. Repositório remoto/local
 
+- Trabalhando offline
+
+Para executar comandos no mvn offline:
+
+```
+mvn -o compile
+```
+
+- Quando houver novas dependências declaradas e executar comandos offline, 
+poderá receber mensagens como esta:
+
+```
+[ERROR] Failed to execute goal on project produtos: Could not resolve dependencies for project net.oluciano.maven:produtos:jar:1.0-SNAPSHOT: Cannot access central (https://repo.maven.apache.org/maven2) in offline mode and the artifact com.google.code.gson:gson:jar:2.6 has not been downloaded from it before. -> [Help 1]
+```
+
+- Repositório local
+
+Todas as dependências baixadas de um usuários serão guardados em seus 
+repositório local.
+
+```
+user/.m2/repository/
+```
 
